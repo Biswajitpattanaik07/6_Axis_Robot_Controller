@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "RoProp-cache") (type "Legacy") (uri "D:/PCB-Design-master/PCB-Design-master/6_Axis_Robot_Controller/RoProp-cache.lib") (options "") (descr "Legacy project cache library"))
+)
