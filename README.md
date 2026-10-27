@@ -1,5 +1,5 @@
 <p align="center">
- <img src="Assets/banner.svg" alt="Axion: 6-axis robot arm controller" width="100%">
+  <img src="Assets/banner.svg" alt="Axion: 6-axis robot arm controller" width="100%">
 </p>
 
 <p align="center">
@@ -93,7 +93,7 @@ Six servo channels, one per joint. Each channel has its own MOSFET driver stage 
 
 Six I2C headers, one per joint. A mounted IMU at each joint lets the firmware measure the actual orientation of every link instead of trusting commanded angles.
 
-> **Addressing:** many IMUs offer only two I2C addresses, so six on one bus will conflict. Document how this board resolves it (multiplexer, separate buses, or address strapping) in [docs/imu-addressing.md](docs/imu-addressing.md).
+> **Addressing:** many IMUs offer only two I2C addresses, so six on one bus will conflict. TBD: describe how this board resolves it (multiplexer, separate buses, or address strapping).
 
 ### Communication
 
@@ -166,22 +166,26 @@ Things to check for your own build:
 ## Repository structure
 
 ```
-axion/
-├── assets/            # Banner and images used in this README
-├── hardware/          # KiCad project: schematic, PCB, footprints, symbols
-├── gerbers/           # Fabrication outputs, ready for a PCB manufacturer
-├── bom/               # Bill of materials and pick-and-place files
-├── docs/              # Schematic PDF, pinout, IMU addressing, design notes
-├── firmware/          # STM32 firmware (work in progress)
-├── LICENSE
+6_Axis_Robot_Controller/
+├── Assets/                    # Banner used in this README
+├── Pics/                      # Board photos and renders
+├── RoProp.kicad_pcb           # KiCad PCB layout
+├── RoProp.kicad_pcb-bak       # KiCad automatic backup
+├── RoProp-cache.lib           # KiCad schematic symbol cache
+├── RoProp-page-001.jpg        # Schematic page image
+├── .gitignore
 └── README.md
 ```
+
+The KiCad project files use the working name **RoProp**. Other KiCad files (schematic, project file) sit in the repository root alongside these.
+
+Planned additions: `gerbers/` for fabrication outputs, `bom/` for the bill of materials, `docs/` for the pinout and design notes, and `firmware/` for the STM32 code.
 
 ---
 
 ## Bill of materials
 
-Key parts. Add the full BOM (with designators, values, footprints and supplier part numbers) to `bom/`.
+Key parts. A full BOM (designators, values, footprints and supplier part numbers) is still to be added.
 
 | Part | Function |
 |---|---|
@@ -199,9 +203,9 @@ Key parts. Add the full BOM (with designators, values, footprints and supplier p
 
 ### 1. Get the board made
 
-1. Open `hardware/` in KiCad to review or modify the design.
-2. Send the files in `gerbers/` to a PCB manufacturer.
-3. Order the parts listed in `bom/` and solder the board.
+1. Clone the repository and open the `RoProp` project in KiCad to review or modify the design.
+2. Export Gerber and drill files from the PCB editor (File > Fabrication Outputs) and send them to a PCB manufacturer.
+3. Order the parts from the bill of materials and solder the board.
 
 ### 2. Bring-up checklist
 
